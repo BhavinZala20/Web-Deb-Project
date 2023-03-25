@@ -1,7 +1,7 @@
 <?php
     $host = "localhost";
     $root = "root";
-    $root_password ='h@numan20';
+    $root_password ='';
     $user = 'newuser';
     $pass = 'newpass';
     $db = "companymangement";
