@@ -19,7 +19,8 @@
       "default",
       {
         "ignore": [
-          "accent-color"
+          "accent-color",
+          "backdrop-filter"
         ]
       }
     ]
