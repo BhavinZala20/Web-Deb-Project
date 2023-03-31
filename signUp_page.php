@@ -22,7 +22,7 @@
 
             <div class="input-box">
                 <span class="icon"><ion-icon name="people"></ion-icon></span>
-                <input type="text" required name="name" class="form-control" id="name">
+                <input type="text" required name="username" class="form-control" id="username">
                 <label>Username</label>
             </div>
 
@@ -46,12 +46,9 @@
     </section>
 
 <?php
-
-    try
-    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-            $uname = $_POST['uname'];
+            $uname = $_POST['username'];
             $email = $_POST['email'];
             $pass = $_POST['pass'];
             
@@ -81,13 +78,6 @@
                 }
             }
         }
-
-    }
-
-    catch(exception $e)
-    {
-        
-    }
 ?>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

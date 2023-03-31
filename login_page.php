@@ -45,7 +45,7 @@
 
             <div class="remember-forgot">
                 <label><input type="checkbox">Remember Me</label>
-                <a href="#">Forget Password ?</a>
+                <a href="reset_pass_page.php">Forget Password ?</a>
             </div>
 
             <button type="submit" class="btn">Login</button>
