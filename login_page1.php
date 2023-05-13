@@ -4,25 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Login Page</title>
+    <title>Website with Login Page</title>
     <link rel="stylesheet" href="style_home.css">
 </head>
 <body>
-    
-<header class="header">
-<div class="header-image">
-            <img src="bar-logo.png" alt="">
-        </div>
+    <header class="header">
         <a href="#" class="logo"><ion-icon name="outline"></ion-icon> BAR</a>
         <nav class="nav">
             <a href="login_page.php">Home</a>
-            <!-- <a href="#">About</a>
+            <a href="#">About</a>
             <a href="#">Menu</a>
             <a href="#">Reviews</a>
             <a href="#">Contact</a>
-            <a href="#">Hello There</a> -->
+            <a href="#">Hello There</a>
         </nav>
     </header>
+
     <section class="home">
         <div class="content">
         </div>
@@ -49,9 +46,9 @@
             </div>
 
             <button type="submit" class="btn">Login</button>
-                <!-- <div class="register-link">
-                    <p>Not a member ?<a href="signup.php"> Sign Up now</a></p>
-                </div> -->
+            <div class="register-link">
+                <p>Not a member ?<a href="signUp_page.php"> Sign Up now</a></p>
+            </div>
             
         </form>
     </div>
@@ -77,15 +74,10 @@
             // Sql query to be executed 
             require_once "createDB.php";
             // require_once('dbConnect.php');
-            // $sql= "SELECT * FROM login_data WHERE email = '$email' AND password = '$pass' ";
-            // $res=$sbh->query($sql);
-            // $result=$res->execute();
-            $stmt = $sbh->prepare("SELECT * FROM login_data WHERE email = :email AND password = :password");
-            $stmt->bindParam(':email', $_REQUEST['email']);
-            $stmt->bindParam(':password', $_REQUEST['pass']);
-            $stmt->execute();
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            if($result)
+            $sql= "SELECT * FROM login_data WHERE email = '$email' AND password = '$pass' ";
+            $res=$sbh->query($sql);
+            $result=$res->execute();
+            if(isset($result))
             {   
                 require_once "createDB.php";
                 $sql= "SELECT * FROM login_data WHERE email = '$email'";
@@ -96,7 +88,7 @@
                     while($row=$res->fetch()){
                         if($row['username']=='admin')
                         {
-                            header("location:admin_dashboard.php");
+                            header("location:index3.php");
                         }
                         else{
                             header("location:employee_event.php");
@@ -109,7 +101,7 @@
                     <h3>Success!</h3>
                     <p>Successfully Loged In</p>
                     </div>';
-                    header("location:employee_event.php");
+                    // header("location:employee_event.php");
                 }
                     
                     

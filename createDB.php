@@ -1,13 +1,13 @@
 <?php
     $host = "localhost";
     $root = "root";
-    $root_password ='h@numan20';
+    $root_password ='';
     $user = 'newuser';
     $pass = 'newpass';
     $db = "companymangement";
     try{
-        // $sbh = new PDO("mysql:host=$host", $root, $root_password);
-        $sbh= new PDO("mysql:host=localhost;dbname=companymangement","root","h@numan20");
+        // $dbh = new PDO("mysql:host=$host", $root, $root_password);
+        $sbh= new PDO("mysql:host=localhost;dbname=companymangement","root","");
         $sbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         /* FOR CREATE DATABASE*/
         // $sbh->exec("CREATE DATABASE `$db`;
@@ -15,7 +15,6 @@
         //         GRANT ALL ON `$db`.* TO '$user'@'localhost';
         //         FLUSH PRIVILEGES;");
         $sbh->exec("USE companymangement");
-
         // $sbh->exec("CREATE TABLE IF NOT EXISTS companymangement.Employee(
         //             emp_no INT(6) PRIMARY KEY,
         //             emp_name VARCHAR(255) NOT NULL,
@@ -25,20 +24,17 @@
         //             doj DATE NOT NULL
         //           )") and 
         // die("Table is created");
-
         // $sbh->exec("CREATE TABLE IF NOT EXISTS companymangement.Applicant(
         //             first_name VARCHAR(125),
         //             last_name VARCHAR(125),
         //             email VARCHAR(255),
         //             mobile NUMERIC(10,0),
         //             doa DATE NOT NULL)");
-
         // $sbh->exec("CREATE TABLE IF NOT EXISTS companymangement.Department(
-        //     dept_id INT(3) PRIMARY KEY,
-        //     dept_name VARCHAR(255),
-        //     no_of_employee INT(4)
+            // dept_id INT(3) PRIMARY KEY,
+            // dept_name VARCHAR(255),
+            // no_of_employee INT(4)
         // )");
-
         // $sbh->exec("CREATE TABLE TechnicalJob(
         //     dept_id INT(3),
         //     available_sheets INT(2),
@@ -47,30 +43,99 @@
         //     CONSTRAINT fk_dept FOREIGN KEY (dept_id) REFERENCES Department(dept_id),
         //     CONSTRAINT fk_emp FOREIGN KEY (emp_no) REFERENCES Employee(emp_no)
         // )");
-
         // $sbh->exec("CREATE TABLE nontechnicalJob(
         //     dept_id INT(3),
         //     sheets INT(2),
         //     working_days INT(1),
         //     emp_no INT(6),
-        //     CONSTRAINT fk_dept_id FOREIGN KEY (dept_id) REFERENCES Department(dept_id),
-        //     CONSTRAINT fk_emp_no FOREIGN KEY (emp_no) REFERENCES Employee(emp_no)
+        //     CONSTRAINT fk_dept FOREIGN KEY (dept_id) REFERENCES Department(dept_id),
+        //     CONSTRAINT fk_emp FOREIGN KEY (emp_no) REFERENCES Employee(emp_no)
+        // )");
+        // $sbh->exec("CREATE TABLE paymentdetails(
+            // p_id INT(6) PRIMARY KEY,
+            // ammount NUMERIC(9,0),
+            // p_date DATE,
+            // p_time TIME
+        // )");
+        // $sbh->exec("CREATE TABLE login_data(
+        //     email VARCHAR(255),
+        //     password VARCHAR(255)
         // )");
 
-        // $sbh->exec("CREATE TABLE paymentdetails(
-        //     p_id INT(6) PRIMARY KEY,
-        //     ammount NUMERIC(9,0),
-        //     p_date DATE,
-        //     p_time TIME
+        // $sbh->exec("CREATE TABLE project(
+        //     pid INT(3) ,
+        //     pname VARCHAR(255),
+        //     emp_no INT(6),
+        //     roll VARCHAR(25),
+        //     pstatus VARCHAR(255) ,
+        //     due DATE,
+        //     CONSTRAINT fk1_emp_no FOREIGN KEY (emp_no) REFERENCES Employee(emp_no)
         // )");
-        
+        // $sbh->exec("CREATE TABLE attandance(
+        //     emp_no INT(6),
+        //     salary INT(7),
+        //     designation varchar(255) NOT NULL,
+        //     month_attandance INT(2),
+        //     month_absent INT(2),
+        //     year_attandance INT(3),
+            
+        //     CONSTRAINT fk1_emp_no_at FOREIGN KEY (emp_no) REFERENCES Employee(emp_no)
+        // )");
+    //     $sql = "INSERT INTO attandance (emp_no, salary, designation, month_attandance, month_absent, year_attandance)
+    //     VALUES
+    //     (1001, 50000, 'Manager', 22, 8, 202),
+    //     (1002, 30000, 'Developer', 20, 10, 203),
+    //     (1003, 40000, 'Designer', 18, 12, 205),
+    //     (1004, 35000, 'Developer', 22, 8, 222),
+    //     (1005, 25000, 'Tester', 18, 12, 221),
+    //     (1006, 20000, 'Intern', 20, 10, 203),
+    //     (1007, 35000, 'Developer', 22, 8, 203),
+    //     (1008, 30000, 'Tester', 20, 10, 205),
+    //     (1009, 40000, 'Manager', 18, 12, 203),
+    //     (1010, 25000, 'Intern', 20, 10, 200),
+    //     (1011, 30000, 'Tester', 22, 8, 203),
+    //     (1012, 35000, 'Developer', 20, 10, 207),
+    //     (1013, 40000, 'Manager', 22, 8, 205),
+    //     (1014, 25000, 'Intern', 18, 12, 214),
+    //     (1015, 30000, 'Developer', 20, 10, 223),
+    //     (1016, 35000, 'Manager', 22, 8, 202),
+    //     (1017, 40000, 'Designer', 18, 12, 203),
+    //     (1018, 25000, 'Tester', 22, 8, 213),
+    //     (1019, 30000, 'Developer', 20, 10, 223),
+    //     (1020, 35000, 'Manager', 18, 12, 222),
+    //     (1021, 40000, 'Designer', 20, 10, 222),
+    //     (1022, 25000, 'Tester', 22, 8, 205),
+    //     (1024, 35000, 'Manager', 20, 10, 208),
+    //     (1025, 40000, 'Designer', 22, 8, 202);
+    //     ";
+    // $res = $sbh->prepare($sql);
+    // $res->execute();
+
+    //    $sql=" INSERT INTO project (pid, pname, emp_no, roll, pstatus, due) 
+    //     VALUES 
+    //     (1, 'Daily Route Planer', 1015,     'Software Devloper,Leader', 'In progress', '2023-05-01'),
+    //     (1, 'Daily Route Planer', 1016,     'Software', 'In progress', '2023-05-01'),
+    //     (1, 'Daily Route Planer', 1017,     'Software', 'In progress', '2023-05-01'),
+    //     (1, 'Daily Route Planer', 1018,     'Software', 'In progress', '2023-05-01'),
+    //     (1, 'Daily Route Planer', 1019,     'Software', 'In progress', '2023-05-01'),
+    //     (2, 'E-Parking Challan', 1020,      'Software ,Leader', 'In progress', '2023-12-31'),
+    //     (2, 'E-Parking Challan', 1021,      'Software', 'In progress', '2023-12-31'),
+    //     (2, 'E-Parking Challan', 1022,      'Software', 'In progress', '2023-12-31'),
+    //     (3, 'Online Election System', 1015, 'Software,Leader', 'In progress', '2024-04-15'),
+    //     (3, 'Online Election System', 1020, 'Software', 'In progress', '2024-04-15'),
+    //     (3, 'Online Election System', 1025, 'Software', 'In progress', '2024-04-15'),
+    //     (3, 'Online Election System', 1026, 'Software', 'In progress', '2024-04-15');";
+        // $res = $sbh->prepare($sql);
+        // $res->execute();
+
+
         // $sql = "INSERT INTO paymentdetails (p_id, ammount, p_date, p_time) VALUES 
         // (1, 1000, '2023-03-24', '14:30:00'),
         // (2, 2000, '2023-03-25', '15:45:00'),
         // (3, 5000, '2023-03-26', '11:00:00');";
+
         // $res = $sbh->prepare($sql);
         // $res->execute();
-
         // $sql = "INSERT INTO companymangement.Department (dept_id, dept_name, no_of_employee)
         // VALUES
         // (101, 'Software Development', 250),
@@ -118,7 +183,6 @@
         // ";
         // $res = $sbh->prepare($sql);
         // $res->execute();
-        
         // $sql = "INSERT INTO TechnicalJob (dept_id, available_sheets, working_days, emp_no)
         // VALUES 
         //     (101, 10, 5, 1001),
@@ -158,6 +222,7 @@
         //     (1029, 'Ashley Choudhary', '222 Cedar Ave, Kolkata, India', 9876543223, '2002-01-01', '2021-02-01'),
         //     (1030, 'Andrew Singh', '333 High St, Hyderabad, India', 9876543224, '2003-01-01', '2021-03-01');
         // ";
+
         // $res = $sbh->prepare($sql);
         // $res->execute();
 
@@ -185,26 +250,8 @@
         // ";
         // $res = $sbh->prepare($sql);
         // $res->execute();
-
-        // $sql = "INSERT INTO nontechnicalJob (dept_id, sheets, working_days, emp_no)
-        // VALUES
-        // (101, 5, 6, 1015),
-        // (102, 3, 5, 1016),
-        // (103, 4, 6, 1017),
-        // (104, 6, 4, 1018),
-        // (105, 7, 5, 1019),
-        // (106, 2, 7, 1020),
-        // (101, 4, 6, 1021),
-        // (102, 6, 5, 1022),
-        // (103, 3, 6, 1023),
-        // (104, 5, 4, 1024),
-        // (105, 6, 5, 1025)";
-        // $res = $sbh->prepare($sql);
-        // $res->execute();
     }
-    
-    catch(PDOException $e)
-    {
+    catch(PDOException $e){
         echo "Error is Occured ".$e;
     }
 ?>
